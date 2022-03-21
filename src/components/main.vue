@@ -48,9 +48,14 @@ export default {
       } else {
         this.start()
       }
-    }
+    },
   },
   created() {
+    const clientWidth = document.body.clientWidth;
+    if (clientWidth > 400) {
+      document.body.style.width = '500px'
+      document.body.style.margin = '0 auto'
+    }
   }
 }
 </script>
