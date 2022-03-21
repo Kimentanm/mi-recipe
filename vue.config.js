@@ -4,7 +4,6 @@ module.exports = {
     css: {
         extract: true,
         sourceMap: false,
-        modules: false
     },
     productionSourceMap: false,
     runtimeCompiler: true,

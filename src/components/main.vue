@@ -1,8 +1,11 @@
 <template>
   <div id="main">
     <div class="content">
-      <h3>{{ recipeName }}</h3>
-      <Button size="small" :type="interval ? 'primary' : 'info'" @click="btnClick">{{ interval ? '今天吃这个！' : '干饭！' }}</Button>
+      <h3>{{ recipe.name }}</h3>
+      <Button class="content-btn" size="small" :type="interval ? 'primary' : 'info'" @click="btnClick">{{ interval ? '今天就烧这个！' : '干饭！' }}</Button>
+      <div class="content-img">
+        <img v-if="!interval" :src="recipe.coverImg" />
+      </div>
     </div>
   </div>
 </template>
@@ -12,10 +15,12 @@ import { Button } from 'vant';
 import recipeData from "@/components/data";
 
 export default {
-  name: 'HelloWorld',
+  name: 'Main',
   data() {
     return {
-      recipeName: '这顿吃啥呢？',
+      recipe: {
+        name: '今天烧什么菜呢'
+      },
       interval: undefined,
     }
   },
@@ -35,7 +40,7 @@ export default {
     },
     intervalFun() {
       const index = this.random(0, recipeData.length - 1);
-      this.recipeName = recipeData[index].name
+      this.recipe = recipeData[index]
     },
     btnClick() {
       if (this.interval) {
@@ -60,5 +65,20 @@ export default {
 
 .content {
   margin: 0 auto;
+  text-align: center;
+}
+
+.content-img {
+  height: 300px;
+  margin: 0 10%;
+}
+
+.content-img img {
+  width: 100%;
+}
+
+.content-btn {
+  display: inline-block;
+  margin-bottom: 30px;
 }
 </style>
